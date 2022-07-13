@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Fastlane Dev',
-  tagline: 'fastlane dev team',
+  tagline: 'v0.0.1 beta',
   url: 'https://your-docusaurus-test-site.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
