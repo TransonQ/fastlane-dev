@@ -8,21 +8,19 @@ tags: [Fastlane]
 ## 这是博客的第一篇文章
 
 :::note
-分享 / 笔记
+分享
 :::
 
 ## 投稿相关
 
-:::info
-name
+:::info 提供以下信息
 
-github 个人地址
+name: (例如: Transon)
+
+github 地址: (例如: https://github.com/quanscheng )
+
 :::
 
-## 试运行, 网站和域名不代表最终结果
-
-:::tip
-测试效果
-:::
+## 试运行
 
 ![图片](docusaurus-plushie-banner.jpeg)

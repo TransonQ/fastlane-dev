@@ -1,0 +1,43 @@
+---
+sidebar_position: 1
+---
+
+# useTabs
+
+## 代码
+
+```jsx title="src/hooks/useTabs.js"
+import { useCallback, useState } from 'react'
+
+import { Tabs } from '@shopify/polaris'
+import { v4 as uid } from 'uuid'
+
+// titles : ["tab-1 ","tab-2 ", ...]
+export const useTabs = ({ titles = [], fitted = false }) => {
+  const [selected, setSelected] = useState(0)
+  const handleTabChange = useCallback((selectedTabIndex) => setSelected(selectedTabIndex), [])
+  const tabs = titles.map((tab) => {
+    return {
+      id: `${uid()}`,
+      content: tab,
+      panelID: `${uid()}`,
+    }
+  })
+
+  const tabJSX = (
+    <Tabs tabs={tabs} selected={selected} onSelect={handleTabChange} fitted={fitted}></Tabs>
+  )
+
+  return {
+    tabJSX,
+    selected,
+    setSelected,
+  }
+}
+```
+
+## 沙盒
+
+import EmbedSandBox from '@site/src/components/EmbedSandBox'
+
+<EmbedSandBox src='https://codesandbox.io/embed/usetabs-48pyqh?fontsize=14&hidenavigation=1&theme=dark'></EmbedSandBox>

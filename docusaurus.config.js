@@ -93,15 +93,31 @@ const config = {
             title: 'Library',
             items: [
               {
-                label: 'Shopify Polaris',
+                label: 'Shopify Polaris ',
                 href: 'https://polaris.shopify.com/',
               },
               {
-                label: 'Shopify Polaris (old)',
+                label: 'Shopify Polaris (old) ',
                 href: 'https://legacy.polaris.shopify.com/',
               },
               {
-                label: 'styled-components',
+                label: 'React Docs (beta) ',
+                href: 'https://beta.reactjs.org/',
+              },
+              {
+                label: 'Recoil ',
+                href: 'https://recoiljs.org/zh-hans/',
+              },
+              {
+                label: 'React Redux ',
+                href: 'https://react-redux.js.org/',
+              },
+              {
+                label: 'ahooks ',
+                href: 'https://ahooks.js.org/zh-CN/',
+              },
+              {
+                label: 'Styled-components ',
                 href: 'https://github.com/styled-components/styled-components',
               },
             ],
@@ -110,11 +126,20 @@ const config = {
             title: 'More',
             items: [
               {
-                label: 'Blog',
+                label: '博客 / 分享',
                 to: '/blog',
               },
+            ],
+          },
+          {
+            title: '友情链接',
+            items: [
               {
-                label: 'GitHub',
+                label: 'Fastlane',
+                href: 'https://fstln.io/',
+              },
+              {
+                label: 'Docusaurus',
                 href: 'https://github.com/facebook/docusaurus',
               },
             ],

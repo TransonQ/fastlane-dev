@@ -1,0 +1,30 @@
+---
+sidebar_position: 1
+---
+
+# Pagination 包装组件
+
+## 代码
+
+```jsx title="src/components/mix/AntPagination.jsx"
+import styled from 'styled-components'
+
+export const AntPagination = styled.div`
+  padding: 8px 16px 16px 0;
+  .ant-pagination {
+    .ant-pagination-prev .ant-pagination-item-link,
+    .ant-pagination-next .ant-pagination-item-link,
+    .ant-pagination-item,
+    .ant-pagination-options .ant-select-selector {
+      border: 0.1rem solid rgba(186, 191, 195, 1);
+      border-radius: 0.4rem;
+    }
+  }
+`
+```
+
+## 沙盒
+
+import EmbedSandBox from '@site/src/components/EmbedSandBox'
+
+<EmbedSandBox src='https://codesandbox.io/embed/zu-jian-wai-ke-antpagination-p2nkc2?fontsize=14&hidenavigation=1&theme=dark'></EmbedSandBox>
