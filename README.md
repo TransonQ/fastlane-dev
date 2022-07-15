@@ -1,41 +1,60 @@
-# Website
+# 语法
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+[MDX](https://mdxjs.com/)
 
-### Installation
+## 侧边栏文件夹配置
 
-```
-$ yarn
-```
+`_category_.json`
 
-### Local Development
-
-```
-$ yarn start
-```
-
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
-
-### Build
-
-```
-$ yarn build
+```json
+{
+  "label": "Tutorial - Basics", // 页签标题
+  "position": 2, // 页签位置
+  "link": {
+    "type": "generated-index", // 类型
+    "description": "描述" // 自动聚合成一个导航页面
+  }
+}
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+`xxx.md`
 
-### Deployment
-
-Using SSH:
-
-```
-$ USE_SSH=true yarn deploy
+```md
+---
+sidebar_position: 6  // 当前页签下的侧边栏位置
+---
 ```
 
-Not using SSH:
+## tip 相关
 
 ```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
+:::note
 
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+一些包含 _Markdown_ `语法` 的 **内容**。 看看[这个 `api`](#)。
+
+:::
+
+:::tip
+
+一些包含 _Markdown_ `语法` 的 **内容**。 看看[这个 `api`](#)。
+
+:::
+
+:::info
+
+一些包含 _Markdown_ `语法` 的 **内容**。 看看[这个 `api`](#)。
+
+:::
+
+:::caution
+
+一些包含 _Markdown_ `语法` 的 **内容**。 看看[这个 `api`](#)。
+
+:::
+
+:::danger
+
+一些包含 _Markdown_ `语法` 的 **内容**。 看看[这个 `api`](#)
+
+:::
+```

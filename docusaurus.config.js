@@ -64,12 +64,12 @@ const config = {
         },
         items: [
           {
+            label: '组件',
             type: 'doc',
             docId: 'intro',
             position: 'left',
-            label: 'Components',
           },
-          { to: '/blog', label: 'Blog', position: 'left' },
+          { label: '博客 / 分享', to: '/blog', position: 'left' },
           // {
           //   href: 'https://github.com/facebook/docusaurus',
           //   label: 'GitHub',

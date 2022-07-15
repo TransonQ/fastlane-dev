@@ -1,0 +1,39 @@
+---
+sidebar_position: 1
+---
+
+# EmptyCard
+
+## 代码
+
+```jsx
+const CustomEmpty = styled.div`
+  .Polaris-EmptyState .Polaris-EmptyState__Section .Polaris-EmptyState__ImageContainer img {
+    height: 226px;
+    width: 226px;
+  }
+`
+
+export const EmptyCard = ({
+  children,
+  heading = 'heading',
+  action = { content: `action button name`, onAction: () => {} },
+}) => {
+  return (
+    <Card>
+      <CustomEmpty>
+        <EmptyState heading={heading} action={action} image={EmptyStatePng}>
+          {children}
+        </EmptyState>
+      </CustomEmpty>
+    </Card>
+  )
+}
+```
+
+## 沙盒
+
+import EmbedSandBox from '@site/src/components/EmbedSandBox'
+
+<EmbedSandBox src='https://codesandbox.io/embed/emptycard-9shnrp?autoresize=1&fontsize=14&hidenavigation=1&theme=dark'></EmbedSandBox>
+

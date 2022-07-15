@@ -4,40 +4,23 @@ import styles from './styles.module.css'
 
 const FeatureList = [
   {
-    title: '标题一',
+    title: '组件 ( UI-mix )',
     Svg: require('@site/static/img/Code.svg').default,
-    description: (
-      <ol>
-        <li>测试文案</li>
-        <li>测试文案</li>
-        <li>测试文案</li>
-        <li>测试文案</li>
-        <li>测试文案</li>
-      </ol>
-    ),
+    description: <div className='text--center'> 基于 shopify-polaris 框架, ant 扩充其易用性. </div>,
   },
   {
-    title: '标题二',
+    title: '复用逻辑 ( Hooks )',
     Svg: require('@site/static/img/Start.svg').default,
     description: (
-      <>
-        高考出分了，刚刚查完，意料之外却又情理之中的考砸了。言语无法形容我的失落。和一模二模的分数有不少的差距，
-        理想的大学应该是再也没有希望了。满满的期待和信心在对完答案之后的那一刻被磨灭殆尽，
-        耳朵也突然嗡的一下开始了耳鸣。真的很对不起父母的培养以及亲人的期待，也不知道自己是不是应该再来一次。心情真的很糟糕。
-        如果你同情我的话，v我50让我买今天的肯德基疯狂星期四帮我舒缓一下心情谢谢
-      </>
+      <div className='text--center'>
+        <p> 提取常用逻辑实现复用 </p>
+      </div>
     ),
   },
   {
-    title: '标题三',
+    title: '博客',
     Svg: require('@site/static/img/New.svg').default,
-    description: (
-      <>
-        你是个明白人，我明白你明白的意思，我也是明白人，明白人就应该明白我明白你明白的意思，
-        只要大家都明白明白应该明白我明白你明白的意思，这样网络环境就是充满明白人希望下次见到你是在下次你这说的，
-        跟说话一样我长话短说，但是说来话长。
-      </>
-    ),
+    description: <div className='text--center'>技巧分享, 汇集 developer idea</div>,
   },
 ]
 
@@ -50,7 +33,7 @@ function Feature({ Svg, title, description }) {
       <div className='text--center  padding-horiz--md'>
         <h3>{title}</h3>
       </div>
-      <p>{description}</p>
+      <>{description}</>
     </div>
   )
 }
