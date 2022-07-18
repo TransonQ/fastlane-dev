@@ -1,14 +1,13 @@
 ---
 slug: welcome
 title: Welcome
-authors: [qsc, jie]
+authors: [qsc, jie, downing]
 tags: [Fastlane]
 ---
 
-
 ## 这是博客的第一篇文章
 
-:::tip 
+:::tip
 
 希望能够做大做强
 
@@ -24,6 +23,6 @@ github 地址: (例如: https://github.com/quanscheng )
 
 :::
 
-## Powered by Fasltlane Digital Platform 
+## Powered by Fasltlane Digital Platform
 
 ![](logo2.png)
