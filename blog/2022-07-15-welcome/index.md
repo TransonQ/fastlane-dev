@@ -1,14 +1,17 @@
 ---
 slug: welcome
 title: Welcome
-authors: [qsc]
+authors: [qsc, jie]
 tags: [Fastlane]
 ---
 
+
 ## 这是博客的第一篇文章
 
-:::note
-分享
+:::tip 
+
+希望能够做大做强
+
 :::
 
 ## 投稿相关
@@ -21,6 +24,6 @@ github 地址: (例如: https://github.com/quanscheng )
 
 :::
 
-## 试运行
+## Powered by Fasltlane Digital Platform 
 
-![图片](docusaurus-plushie-banner.jpeg)
+![](logo2.png)
