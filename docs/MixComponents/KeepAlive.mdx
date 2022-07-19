@@ -1,0 +1,26 @@
+---
+sidebar_position: 2
+---
+
+# KeepAlive
+
+:::tip 包装组件
+
+使用 css 的 display 属性控制内容是否展示
+
+:::
+
+## 组件代码
+
+```jsx title="src/components/KeepAlive.jsx"
+import React from 'react'
+import styled from 'styled-components'
+
+const KeepBox = styled.div`
+  display: ${(props) => (props.show ? 'block' : 'none')};
+`
+
+export const KeepAlive = ({ children, show }) => {
+  return <KeepBox show={show}>{children}</KeepBox>
+}
+```

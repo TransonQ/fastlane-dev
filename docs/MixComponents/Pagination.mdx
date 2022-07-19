@@ -1,10 +1,16 @@
 ---
-sidebar_position: 1
+sidebar_position: 4
 ---
 
-# Pagination 包装组件
+# Pagination
 
-## 代码
+:::tip 容器组件 - 包裹阿里 pagination 组件实现局部样式隔离
+
+:::
+
+
+
+## 组件代码
 
 ```jsx title="src/components/mix/AntPagination.jsx"
 import styled from 'styled-components'
@@ -22,8 +28,26 @@ export const AntPagination = styled.div`
   }
 `
 ```
+## 使用方式
+```jsx title="使用方式"
+// 在 ant 的 pagination 组件外层包裹一下就行了
+<AntPagination>
+  <Pagination
+    // showTotal={(total, range) =>
+    //   `${range[0]}-${range[1]} of ${total} items`
+    // }
+    // current={1}
+    // pageSize={10}
+    // pageSizeOptions={[10, 20, 50, 100]}
+    total={1000}
+    onChange={(page, pageSize) => {
+      console.log('page, pageSize', page, pageSize)
+    }}
+  />
+</AntPagination>
+```
 
-## 沙盒
+## 预览
 
 import EmbedSandBox from '@site/src/components/EmbedSandBox'
 

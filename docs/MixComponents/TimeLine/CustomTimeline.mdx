@@ -1,0 +1,91 @@
+---
+sidebar_position: 3
+---
+
+# CustomTimeline
+
+:::tip 关于命名
+
+自定义重命名, 组件命名防止冲突, 引入的 [ant 组件 Timeline](https://ant.design/components/timeline-cn/#header)
+
+:::
+
+## 组件代码
+
+```jsx title="CustomTimeLine.jsx"
+import { Button, Caption, Card, Stack, TextStyle } from "@shopify/polaris";
+import React, { useEffect, useMemo, useState } from "react";
+
+import { CollectCard } from "./CollectCard";
+import { Timeline } from "antd";
+import { TimelineBox } from "./TimelineBox";
+import { TimelineDot } from "./TimelineDot";
+
+export const CustomTimeLine = ({ events, len = 5 }) => {
+  const [list, setList] = useState([]);
+  const [renderList, setRenderList] = useState([]);
+
+  const isLess = useMemo(() => list?.length !== renderList?.length, [
+    list,
+    renderList
+  ]);
+  const isHasMore = useMemo(() => list?.length > 5, [list]);
+
+  useEffect(() => {
+    setList(events);
+    const shortCut = events?.slice(0, len);
+    setRenderList(shortCut);
+  }, [events, len]);
+
+  return (
+    <CollectCard title="CustomTimeline">
+      <Card.Section>
+        <TimelineBox>
+          <Timeline mode={"left"}>
+            {renderList?.map((event) => (
+              <Timeline.Item
+                key={event.id}
+                dot={<TimelineDot />}
+                label={
+                  <TextStyle variation="subdued">{event.created_at}</TextStyle>
+                }
+              >
+                <TextStyle variation="strong">
+                  {event?.creator?.name}
+                  <Caption>{event?.content}</Caption>
+                </TextStyle>
+              </Timeline.Item>
+            ))}
+          </Timeline>
+        </TimelineBox>
+        {isHasMore && (
+          <Stack distribution="center">
+            <Button
+              plain
+              disclosure={isLess ? "down" : "up"}
+              onClick={() => {
+                if (isLess) {
+                  setRenderList([...list]);
+                } else {
+                  setRenderList([...list.slice(0, 5)]);
+                }
+              }}
+            >
+              {isLess ? "Show all" : "Show less"}
+            </Button>
+          </Stack>
+        )}
+      </Card.Section>
+    </CollectCard>
+  );
+};
+
+```
+
+## 预览 (宽卡片用的连带 CollectCard 的最外层封装, 侧边栏模式为 Card.Section 的为最外层封装)
+
+> 侧边栏见预览中的 SideTimeline, 为 Card.Section 包裹的代码片段组件, 通常带有 remark 和输入框, 可用 CollectCard 自定义封装
+
+import EmbedSandBox from '@site/src/components/EmbedSandBox'
+
+<EmbedSandBox src='https://codesandbox.io/embed/customtimeline-p2n2qj?fontsize=14&hidenavigation=1&theme=dark'></EmbedSandBox>

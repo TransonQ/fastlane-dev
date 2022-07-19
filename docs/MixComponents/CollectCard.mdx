@@ -1,0 +1,65 @@
+---
+sidebar_position: 3
+---
+
+# CollectCard
+
+## 组件代码
+
+```jsx title="src/components/CollectCard.jsx"
+import { Card, Icon } from '@shopify/polaris'
+import { ChevronDownMinor, ChevronUpMinor } from '@shopify/polaris-icons'
+import { useCallback, useEffect, useState } from 'react'
+
+import { KeepAlive } from './KeepAlive'
+import styled from 'styled-components'
+
+const SvgColor = styled.div`
+  > span > svg {
+    fill: rgba(92, 95, 98, 1);
+  }
+`
+
+// 收缩状态撑开一些距离, 参照 shopify 间距
+const Bottom = styled.div`
+  height: 16px;
+`
+
+//  title: Card 的 title , mountStatus: 挂载时是否收缩
+export function CollectCard({ children, title, mountStatus, action = [] }) {
+  const [isUnfold, setIsUnfold] = useState(true)
+  const toggle = useCallback(() => setIsUnfold((boo) => !boo), [])
+
+  useEffect(() => {
+    if (typeof mountStatus !== 'undefined') {
+      setIsUnfold(mountStatus)
+    }
+  }, [mountStatus])
+
+  return (
+    <Card
+      title={title}
+      actions={[
+        ...action,
+        {
+          content: (
+            <SvgColor>
+              <Icon source={isUnfold ? ChevronDownMinor : ChevronUpMinor} />
+            </SvgColor>
+          ),
+          onAction: toggle,
+        },
+      ]}
+    >
+      <KeepAlive show={isUnfold}>{children}</KeepAlive>
+      {!isUnfold ? <Bottom /> : null}
+    </Card>
+  )
+}
+```
+
+## 预览
+
+import EmbedSandBox from '@site/src/components/EmbedSandBox'
+
+<EmbedSandBox src='https://codesandbox.io/embed/collectcard-evopms?fontsize=14&hidenavigation=1&theme=dark'></EmbedSandBox>

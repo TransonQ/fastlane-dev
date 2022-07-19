@@ -1,0 +1,33 @@
+---
+sidebar_position: 1
+---
+
+# TimelineBox
+
+:::tip
+
+包装容器: 包裹 ant timeline 组件, 可根据项目自定义宽度以适应需求
+
+:::
+
+![](./img/timeline.png)
+
+## 组件代码
+
+```jsx title="src/components/TimelineBox.jsx"
+import styled from 'styled-components'
+
+export const TimelineBox = styled.div`
+  display: flex;
+  width: 330px;
+  > .ant-timeline {
+    width: 100%;
+    .ant-timeline-item .ant-timeline-item-content .Polaris-Caption {
+      width: 300px;
+    }
+    li:last-of-type {
+      padding: 0px;
+    }
+  }
+`
+```

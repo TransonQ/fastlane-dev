@@ -1,7 +1,7 @@
 ---
 slug: welcome
 title: Welcome
-authors: [qsc, jie, downing]
+authors: [qsc, jie, downing, hongyuan, larry]
 tags: [Fastlane]
 ---
 

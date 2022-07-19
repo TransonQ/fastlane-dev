@@ -1,0 +1,8 @@
+{
+  "label": "Timline 套件",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "description": "timeline相关组件"
+  }
+}

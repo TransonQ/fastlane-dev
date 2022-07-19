@@ -10,8 +10,20 @@ jie:
   url: https://github.com/liuzhijie1
   image_url: https://github.com/liuzhijie1.png
 
+larry:
+  name: Larry
+  title: Web Developer of Fastlane
+  url: https://github.com/YuLarry
+  image_url: https://github.com/YuLarry.png
+
 downing:
   name: Downing
-  title: Service Developer
+  title: Service Developer of Fastlane
   url: https://github.com/am-okalin
   image_url: https://github.com/am-okalin.png
+
+hongyuan:
+  name: Hongyuan
+  title: Service Developer of Fastlane
+  url: https://github.com/LHongy
+  image_url: https://github.com/LHongy.png
