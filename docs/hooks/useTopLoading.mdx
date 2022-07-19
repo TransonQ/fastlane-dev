@@ -1,0 +1,39 @@
+---
+sidebar_position: 3
+---
+
+# useTopLoading
+
+:::tip
+
+当前组件需要的 frame 顶部加载 loading 效果
+
+:::
+
+## 代码
+
+```jsx
+import { Loading } from '@shopify/polaris'
+import { useCallback, useMemo, useState } from 'react'
+
+export const useTopLoading = () => {
+  const [isLoading, setIsLoading] = useState(false)
+
+  const hiddenTopLoading = useCallback(() => setIsLoading(false), [])
+  const showTopLoading = useCallback(() => setIsLoading(true), [])
+
+  const TopLoadingJSX = useMemo(() => (isLoading ? <Loading /> : null), [isLoading])
+
+  return {
+    TopLoadingJSX,
+    hiddenTopLoading,
+    showTopLoading,
+  }
+}
+```
+
+## 预览
+
+import EmbedSandBox from '@site/src/components/EmbedSandBox'
+
+<EmbedSandBox src='https://codesandbox.io/embed/usetoploading-qv7z1d?fontsize=14&hidenavigation=1&theme=dark'></EmbedSandBox>

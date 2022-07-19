@@ -1,0 +1,72 @@
+---
+sidebar_position: 6
+---
+
+# UploadProgress
+
+:::tip
+
+上传用户反馈
+
+:::
+
+## 组件代码
+
+```jsx title="UploadProgress.jsx"
+import { Button, List, ProgressBar, TextStyle } from '@shopify/polaris'
+import React, { useEffect, useState } from 'react'
+
+const FakeProgress = () => {
+  const [progress, setProgress] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setProgress((num) => {
+        if (num < 98) {
+          return num + 2
+        } else {
+          return num
+        }
+      })
+    }, 300)
+
+    return () => {
+      clearInterval(timer)
+    }
+  }, [])
+
+  return <ProgressBar color='primary' progress={progress} />
+}
+
+const FillProgress = ({ successInfo }) => (
+  <>
+    <ProgressBar color='primary' progress={100} />
+    <br />
+    <TextStyle>
+      <List type='bullet'>
+        <List.Item>
+          Succeed: <TextStyle variation='strong'>{successInfo.success}</TextStyle> items
+        </List.Item>
+        <List.Item>
+          Failed: <TextStyle variation='strong'>{successInfo.fail}</TextStyle> items
+        </List.Item>
+        <List.Item>
+          <Button plain>Click here</Button>
+          &nbsp; to download failed records! Then you can reimport!
+        </List.Item>
+      </List>
+    </TextStyle>
+  </>
+)
+
+const ErrorProgress = () => <ProgressBar color='critical' progress={30} />
+
+// 假进度, 完成进度, 上传错误进度
+export { FakeProgress, FillProgress, ErrorProgress }
+```
+
+## 预览
+
+import EmbedSandBox from '@site/src/components/EmbedSandBox'
+
+<EmbedSandBox src='https://codesandbox.io/embed/uploadprogress-2kql0r?fontsize=14&hidenavigation=1&theme=dark'></EmbedSandBox>

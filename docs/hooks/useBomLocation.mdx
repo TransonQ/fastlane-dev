@@ -1,0 +1,30 @@
+---
+sidebar_position: 2
+---
+
+# useBomLocation
+
+:::tip
+
+得到一个 location 对象, 通常用于跳转新窗口是, 获取对象中的 origin 属性, 用于拼接跳转新窗口的地址
+
+:::
+
+```jsx
+export const useBomLocation = () => {
+  return window.location
+}
+```
+
+## 使用
+
+```jsx
+const {origin} = useBomLocation()
+
+...
+
+// 跳转新窗口函数:
+
+const navToNewWindow =useCallback(() =>  window.open(`${origin}/home`) ,[])
+
+```

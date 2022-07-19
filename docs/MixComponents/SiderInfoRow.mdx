@@ -1,0 +1,34 @@
+---
+sidebar_position: 7
+---
+
+# SiderInfoRow
+
+:::tip
+
+用于侧边栏次要信息展示, 可作为最小单元组件使用
+
+:::
+
+## 组件代码
+
+```jsx title="src/components/SiderInfoRow.jsx"
+import { Stack, TextStyle } from '@shopify/polaris'
+
+import React from 'react'
+
+export const SiderInfoRow = ({ label, value }) => {
+  return (
+    <Stack distribution='' wrap={false}>
+      <Stack.Item>
+        <div style={{ width: 80 }}>
+          <TextStyle variation='subdued'>{label}</TextStyle>
+        </div>
+      </Stack.Item>
+      <Stack.Item>
+        <TextStyle>{value}</TextStyle>
+      </Stack.Item>
+    </Stack>
+  )
+}
+```

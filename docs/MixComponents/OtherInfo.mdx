@@ -1,0 +1,73 @@
+---
+sidebar_position: 8
+---
+
+# OtherInfo
+
+:::tip
+
+基于 SiderInfoRow 的二次封装, 主要用于 侧边栏常用更新信息的展示
+
+:::
+
+## 组件代码
+
+```jsx title="OtherInfo.jsx"
+import { Avatar, Card, Stack, TextStyle } from '@shopify/polaris'
+
+import { CollectCard } from './CollectCard'
+import React from 'react'
+import { SiderInfoRow } from './SiderInfoRow'
+
+export const OtherInfo = ({
+  title,
+  creatorAvatar,
+  creator,
+  createTime,
+  updaterAvatar,
+  updater,
+  updateTime,
+}) => {
+  return (
+    <CollectCard title={title}>
+      <Card.Section>
+        {!!creator && (
+          <>
+            <SiderInfoRow label='Create by ' value={AvatarNameBox(creatorAvatar, creator)} />
+            <div style={{ height: 8 }} />
+          </>
+        )}
+        {!!createTime && (
+          <>
+            <SiderInfoRow label='Create time ' value={createTime} />
+            <div style={{ height: 8 }} />
+          </>
+        )}
+
+        {!!updater && (
+          <>
+            <SiderInfoRow label='Update by ' value={AvatarNameBox(updaterAvatar, updater)} />
+            <div style={{ height: 8 }} />
+          </>
+        )}
+        {!!updateTime && <SiderInfoRow label='Update time ' value={updateTime} />}
+      </Card.Section>
+    </CollectCard>
+  )
+}
+
+function AvatarNameBox(url, name) {
+  return (
+    <Stack spacing='tight'>
+      <Avatar size='extraSmall' source={url} />
+      <TextStyle>{name}</TextStyle>
+    </Stack>
+  )
+}
+```
+
+## 预览
+
+import EmbedSandBox from '@site/src/components/EmbedSandBox'
+
+<EmbedSandBox src='https://codesandbox.io/embed/otherinfo-kjiltr?fontsize=14&hidenavigation=1&theme=dark'></EmbedSandBox>

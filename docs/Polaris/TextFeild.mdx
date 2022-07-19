@@ -1,0 +1,23 @@
+---
+sidebar_position: 2
+---
+
+# TextFeild
+
+:::caution .
+
+shopify 组件 TextFeild 其实不用特意写 handleChange 函数. 可以使 状态更简洁
+
+:::
+
+```jsx
+const [text, setText] = useState('')
+...
+return <TextField value={text} onChange={setText} />
+```
+
+## 预览
+
+import EmbedSandBox from '@site/src/components/EmbedSandBox'
+
+<EmbedSandBox src='https://codesandbox.io/embed/usetextfield-2dq3jq?fontsize=14&hidenavigation=1&theme=dark'></EmbedSandBox>

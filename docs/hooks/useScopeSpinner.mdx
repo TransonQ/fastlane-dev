@@ -1,0 +1,55 @@
+---
+sidebar_position: 4
+---
+
+# useScopeSpinner
+
+:::tip
+
+局部的加载 spinner 组件
+
+:::
+
+## 代码
+
+```jsx
+import { Spinner } from '@shopify/polaris'
+import styled from 'styled-components'
+import { useState } from 'react'
+
+const LoadingWrap = styled.div`
+  display: ${(props) => (props.isLoading ? 'block' : 'none')};
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.8);
+`
+const LoadingUI = styled.div`
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+`
+
+// 局部的 Spinner, 使用只需要在内容区外层包一个div/带有 position: relative 的组件
+export const useScopeSpinner = () => {
+  const [isLoading, setIsLoading] = useState(false)
+
+  const ScopeSpinner = (
+    <LoadingWrap isLoading={isLoading}>
+      <LoadingUI>
+        <Spinner accessibilityLabel='Spinner' size='small' />
+      </LoadingUI>
+    </LoadingWrap>
+  )
+
+  return { ScopeSpinner, setIsLoading }
+}
+```
+
+## 预览
+
+import EmbedSandBox from '@site/src/components/EmbedSandBox'
+
+<EmbedSandBox src='https://codesandbox.io/embed/usescopespinner-ui4uqz?fontsize=14&hidenavigation=1&theme=dark'></EmbedSandBox>
