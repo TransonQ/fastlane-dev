@@ -2,5 +2,53 @@
 sidebar_position: 5
 ---
 
-
 # useBottomSpinner
+
+:::tip
+
+通常在一些需要动态加载/查新的弹窗列表展示此加载样式, 参考 shopify 商城的 add tag 功能的 loading 方式
+
+:::
+
+## 代码
+
+```jsx
+import { Spinner, Stack, TextStyle } from '@shopify/polaris'
+
+import styled from 'styled-components'
+import { useState } from 'react'
+
+const PositionStyled = styled.div`
+  display: ${(props) => (props.isLoading ? 'block' : 'none')};
+  position: absolute;
+  z-index: 1000;
+  bottom: 0;
+  width: 100%;
+`
+
+export const useBottomSpinner = () => {
+  const [isLoading, setIsLoading] = useState(true)
+
+  const BottomSpinner = (
+    <PositionStyled isLoading={isLoading}>
+      <Stack distribution='center' alignment='center'>
+        <Stack.Item>
+          <Spinner accessibilityLabel='Spinner' size='small' />
+        </Stack.Item>
+        <Stack.Item>
+          <div style={{ paddingBottom: 4 }}>
+            <TextStyle variation='subdued'>loading ...</TextStyle>
+          </div>
+        </Stack.Item>
+      </Stack>
+    </PositionStyled>
+  )
+  return { BottomSpinner, setIsLoading }
+}
+```
+
+## 预览
+
+import EmbedSandBox from '@site/src/components/EmbedSandBox'
+
+<EmbedSandBox src='https://codesandbox.io/embed/usebottomspinner-h8oji4?fontsize=14&hidenavigation=1&theme=dark'></EmbedSandBox>
