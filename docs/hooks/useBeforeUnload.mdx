@@ -1,0 +1,74 @@
+---
+sidebar_position: 6
+---
+
+# useBeforeUnload
+
+:::tip
+
+此钩子函数为一个套件, 依赖于 `react-beforeunload-component` 库, 用于项目在路由切换时候阻断其切换行为.
+
+同时按照 shopify-polaris 规则定制了自定义的 modal 确实用户是否同意切换路由.
+
+:::
+
+## 代码
+
+```jsx title="src/hooks/useBeforeUnload"
+import BeforeUnloadComponent from 'react-beforeunload-component'
+import { Modal } from '@shopify/polaris'
+import React from 'react'
+import { useToggle } from 'ahooks'
+
+const ConfirmLeave = ({ onClose, onSubmit, open = true }) => {
+  return (
+    <Modal
+      open={open}
+      onClose={onClose}
+      title='Leave page with unsaved changes?'
+      primaryAction={{
+        content: 'Leave page',
+        onAction: onSubmit,
+        destructive: true,
+      }}
+      secondaryActions={[
+        {
+          content: 'Stay',
+          onAction: onClose,
+        },
+      ]}
+    >
+      <Modal.Section>
+        <p>Leave this page will delete all unsaved changes.</p>
+      </Modal.Section>
+    </Modal>
+  )
+}
+/** 包裹组件,阻断浏览器切换路由的行为:
+ * 阻断该组件跳转路由,blockRoute: 是否触发阻断效果
+ *  */
+export const BeforeUnload = ({ children, blockRoute = true }) => {
+  return (
+    <BeforeUnloadComponent
+      blockRoute={blockRoute}
+      modalComponentHandler={({ handleModalLeave, handleModalCancel }) => {
+        return <ConfirmLeave onClose={handleModalCancel} onSubmit={handleModalLeave} />
+      }}
+      ignoreChildrenLinks={true}
+    >
+      {children}
+    </BeforeUnloadComponent>
+  )
+}
+/**
+ * useBeforeUnload 这个钩子是用于`返回按钮`的阻断并确认
+ */
+export const useBeforeUnload = ({ action }) => {
+  const [active, { toggle: toggleConfirmLeave }] = useToggle()
+
+  const ConfirmLeaveModal = (
+    <ConfirmLeave open={active} onClose={toggleConfirmLeave} onSubmit={action} />
+  )
+  return { ConfirmLeaveModal, toggleConfirmLeave }
+}
+```
