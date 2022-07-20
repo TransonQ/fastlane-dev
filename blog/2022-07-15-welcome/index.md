@@ -1,7 +1,7 @@
 ---
 slug: welcome
 title: Welcome
-authors: [qsc, jie, downing, hongyuan, larry]
+authors: [tristy, qsc, jie, downing, hongyuan, larry]
 tags: [Fastlane]
 ---
 
@@ -9,7 +9,7 @@ tags: [Fastlane]
 
 :::tip
 
-希望能够做大做强
+分享
 
 :::
 
@@ -20,6 +20,18 @@ tags: [Fastlane]
 name: (例如: Transon)
 
 github 地址: (例如: https://github.com/quanscheng )
+
+文件
+
+- 纯文本文件: 文章名.md
+
+- 文件夹压缩包: 文件结构如下
+
+```
+文件夹
+  |-文章名.md (引用图片采用相对路径,Markdown语法)
+  |-图片
+```
 
 :::
 
