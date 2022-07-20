@@ -89,3 +89,15 @@ volta install node@16
 - `pin` : 在项目内使用, 可以锁定当前项目指定的 node 版本
 
 `更多命令见文档` : https://volta.sh/
+
+## 题外话
+
+:::note 为什么希望保持 node 在本地处于最新的 current 版本?
+
+因为现在很多优秀的基于 js 的工具 比如 : zx (js 编写 shell 脚本), docusaurus 都要求在 node@16 以上.
+
+:::
+
+> Any application that can be written in JavaScript, will eventually be written in JavaScript.
+>
+> -- Jeff Atwood
