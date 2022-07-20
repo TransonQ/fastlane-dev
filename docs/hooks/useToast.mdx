@@ -1,0 +1,46 @@
+---
+sidebar_position: 7
+---
+
+# useToast
+
+:::tip
+
+使用 Polaris 的 Toast 组件的钩子, 可以根据项目情况, 自定义全局的快捷呼出 Toast 的钩子
+
+:::
+
+## 代码
+
+```jsx title="src/hooks/useToast"
+import { Toast } from '@shopify/polaris'
+import { useCallback, useState } from 'react'
+
+export const useToast = () => {
+  const [active, setActive] = useState(false)
+  const toggle = useCallback(() => setActive((active) => !active), [])
+
+  const [msg, setMsg] = useState('')
+  const [error, setError] = useState(false)
+
+  const handleToast = useCallback(
+    ({ msg = '', err = false }) =>
+      () => {
+        setMsg(msg)
+        setError(err)
+        toggle()
+      },
+    [toggle]
+  )
+
+  const ToastJSX = active ? <Toast content={msg} error={error} onDismiss={toggle} /> : null
+
+  return { ToastJSX, handleToast }
+}
+```
+
+## 预览
+
+import EmbedSandBox from '@site/src/components/EmbedSandBox'
+
+<EmbedSandBox src='https://codesandbox.io/embed/usetoast-m6fn9b?fontsize=14&hidenavigation=1&theme=dark'></EmbedSandBox>
