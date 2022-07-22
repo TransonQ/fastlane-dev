@@ -7,6 +7,9 @@ tags: [终端, 效率工具]
 
 ## Fig
 
+- github: [withfig/autocomplete](https://github.com/withfig/autocomplete)
+- doc : [fig.io](https://fig.io/)
+
 ![](fig1.png)
 
 > 目前仅支持 MacOS
