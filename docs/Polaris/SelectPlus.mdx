@@ -1,0 +1,178 @@
+---
+sidebar_position: 3
+---
+
+# SelectPlus
+
+> 说明: 如果用到 antd 的 Drawer ,下拉框层级不够 , Frame 层级 z-index:520, 下拉框是单独的一个 div,需要提升下拉框的层级,如下:
+
+```scss title="app.scss"
+#PolarisPortalsContainer {
+  // .PositionedOverlay
+  .Polaris-Popover__PopoverOverlay {
+    z-index: 521 !important;
+  }
+}
+```
+
+## 代码
+
+```js title="src/components/SelectPlus.jsx"
+import { Autocomplete, Icon, TextContainer } from '@shopify/polaris'
+import React, { useCallback, useEffect, useState } from 'react'
+
+import { SearchMinor, SelectMinor } from '@shopify/polaris-icons'
+import styled from 'styled-components'
+import { useUpdateEffect } from 'ahooks'
+import PropTypes from 'prop-types'
+
+// prop-types 是react官方独立出来的类型检查库, 可选.
+SelectPlus.propTypes = {
+  allowMultiple: PropTypes.bool, // 多选
+  error: PropTypes.bool, // 行内错误提示
+  label: PropTypes.string, // 标题
+  onSelect: PropTypes.func, // 选择回调
+  options: PropTypes.array.isRequired, // 选项栏, 必填
+  placeholder: PropTypes.string, // placeholder
+  requiredIndicator: PropTypes.bool, // 是否需要校验
+  select: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
+}
+
+export function SelectPlus({
+  options = [],
+  label = '',
+  allowMultiple = false,
+  select,
+  onSelect,
+  placeholder = 'Select',
+  requiredIndicator,
+  error,
+}) {
+  const [inputValue, setInputValue] = useState('') // 输入搜索框
+  const [holder, setHolder] = useState('') // placeholder
+  const [ops, setOps] = useState([]) // dynamic options
+
+  // 没有输入,options就全部展示
+  useEffect(() => {
+    if (!inputValue) setOps(options)
+  }, [options, inputValue])
+  // 输入状态
+  const updateText = useCallback(
+    (value) => {
+      setInputValue(value)
+      // 输入状态 -> 搜索行为
+      if (value === '') {
+        setOps(options)
+        return
+      }
+      const resultOptions = Search(value, options)
+      setOps(resultOptions)
+    },
+    [options]
+  )
+  // 映射 placeholder 对应选中的 label
+  useEffect(() => {
+    const res = options.filter((item) => select.includes(item.value))
+    const showLabelText = res.map((o) => o.label).join(', ')
+    setHolder(showLabelText)
+  }, [select, options])
+  //
+  useUpdateEffect(() => {
+    const showtext = MapTextInput(select, options)
+    setInputValue(showtext)
+  }, [select, options])
+
+  const textField = (
+    <SuffixOrder>
+      <Autocomplete.TextField
+        autoComplete='off'
+        onChange={updateText}
+        onFocus={() => {
+          setInputValue('')
+        }}
+        label={label}
+        value={inputValue}
+        suffix={<Icon source={SelectMinor} color='base' />}
+        placeholder={holder ? holder : placeholder}
+        onBlur={() => {
+          setInputValue(holder)
+        }}
+        clearButton
+        onClearButtonClick={() => {
+          onSelect([])
+          setHolder('')
+        }}
+        requiredIndicator={requiredIndicator}
+        error={error}
+      />
+    </SuffixOrder>
+  )
+  // 空状态
+  const emptyState = (
+    <React.Fragment>
+      <Icon source={SearchMinor} />
+      <div style={{ textAlign: 'center' }}>
+        <TextContainer>Could not find any results</TextContainer>
+      </div>
+    </React.Fragment>
+  )
+
+  return (
+    <Autocomplete
+      options={ops}
+      selected={select}
+      onSelect={onSelect}
+      textField={textField}
+      allowMultiple={allowMultiple}
+      emptyState={emptyState}
+    />
+  )
+}
+
+// 用于将autocompelete中选中的label 展示到inputvalue的通用部分逻辑:
+function MapTextInput(selectedOptions, deselectedOptions) {
+  const objArr = deselectedOptions.filter((item) => selectedOptions.includes(item.value))
+  const showLabelText = objArr.map((o) => o.label).join(', ')
+
+  return showLabelText
+}
+// 检索逻辑
+function Search(value, deselectedOptions) {
+  const filterRegex = new RegExp(value, 'i')
+  const resultOptions = deselectedOptions.filter((option) => option.label.match(filterRegex))
+
+  return resultOptions
+}
+
+// 为了实现 clearButton 在输入框的最末尾 , 改变了 shopify 原有的位置, suffix 置于最右侧
+const SuffixOrder = styled.div`
+  .Polaris-TextField {
+    .Polaris-TextField__Suffix {
+      order: 1;
+    }
+  }
+  .Polaris-TextField--hasValue {
+    .Polaris-TextField__Suffix {
+      position: absolute;
+      right: 0;
+    }
+    .Polaris-TextField__ClearButton {
+      opacity: 0;
+    }
+    &:hover {
+      .Polaris-TextField__ClearButton {
+        opacity: 1;
+      }
+      .Polaris-TextField__Suffix {
+        opacity: 0;
+      }
+    }
+  }
+`
+```
+
+## 预览
+
+import EmbedSandBox from '@site/src/components/EmbedSandBox'
+
+<EmbedSandBox src='https://codesandbox.io/embed/selectplus-jian-suo-gong-neng-shu-ru-bian-hua-wan-zheng-ban-8eveuu?fontsize=14&hidenavigation=1&theme=dark'></EmbedSandBox>
