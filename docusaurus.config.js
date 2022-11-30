@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Fastlane Dev',
-  tagline: 'v0.0.1 beta',
+  tagline: 'Welcome Devlopers! ',
   url: 'https://fastlane-dev.vercel.app',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -62,20 +62,20 @@ const config = {
         },
       },
       navbar: {
-        title: 'Fastlane Dev',
-        logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.png',
-        },
+        title: 'Fastlane',
+        // logo: {
+        //   alt: 'My Site Logo',
+        //   src: 'img/logo.png',
+        // },
         hideOnScroll: true,
         items: [
           {
-            label: '组件',
+            label: '文档',
             type: 'doc',
             docId: 'intro',
             position: 'left',
           },
-          { label: '博客 / 分享', to: '/blog', position: 'left' },
+          { label: 'Blogs', to: '/blog', position: 'left' },
           // {
           //   href: 'https://github.com/facebook/docusaurus',
           //   label: 'GitHub',
@@ -85,72 +85,64 @@ const config = {
       },
       footer: {
         style: 'dark',
-        links: [
-          {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Components',
-                to: '/docs/intro',
-              },
-            ],
-          },
-          {
-            title: 'Library',
-            items: [
-              {
-                label: 'Shopify Polaris ',
-                href: 'https://polaris.shopify.com/',
-              },
-              {
-                label: 'Shopify Polaris (old) ',
-                href: 'https://legacy.polaris.shopify.com/',
-              },
-              {
-                label: 'React Docs (beta) ',
-                href: 'https://beta.reactjs.org/',
-              },
-              {
-                label: 'Recoil ',
-                href: 'https://recoiljs.org/zh-hans/',
-              },
-              {
-                label: 'React Redux ',
-                href: 'https://react-redux.js.org/',
-              },
-              {
-                label: 'ahooks ',
-                href: 'https://ahooks.js.org/zh-CN/',
-              },
-              {
-                label: 'Styled-components ',
-                href: 'https://github.com/styled-components/styled-components',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: '博客 / 分享',
-                to: '/blog',
-              },
-            ],
-          },
-          {
-            title: '友情链接',
-            items: [
-              {
-                label: 'Fastlane',
-                href: 'https://fstln.io/',
-              },
-              {
-                label: 'Docusaurus',
-                href: 'https://github.com/facebook/docusaurus',
-              },
-            ],
-          },
-        ],
+        // links: [
+        //   {
+        //     title: 'Docs',
+        //     items: [
+        //       {
+        //         label: 'Components',
+        //         to: '/docs/intro',
+        //       },
+        //     ],
+        //   },
+        //   {
+        //     title: 'Library',
+        //     items: [
+        //       {
+        //         label: 'Shopify Polaris ',
+        //         href: 'https://polaris.shopify.com/',
+        //       },
+        //       {
+        //         label: 'React Docs (beta) ',
+        //         href: 'https://beta.reactjs.org/',
+        //       },
+        //       {
+        //         label: 'Recoil ',
+        //         href: 'https://recoiljs.org/zh-hans/',
+        //       },
+        //       {
+        //         label: 'ahooks ',
+        //         href: 'https://ahooks.js.org/zh-CN/',
+        //       },
+        //       {
+        //         label: 'Styled-components ',
+        //         href: 'https://github.com/styled-components/styled-components',
+        //       },
+        //     ],
+        //   },
+        //   {
+        //     title: 'More',
+        //     items: [
+        //       {
+        //         label: '博客 / 分享',
+        //         to: '/blog',
+        //       },
+        //     ],
+        //   },
+        //   {
+        //     title: '友情链接',
+        //     items: [
+        //       {
+        //         label: 'Fastlane',
+        //         href: 'https://fstln.io/',
+        //       },
+        //       {
+        //         label: 'Docusaurus',
+        //         href: 'https://github.com/facebook/docusaurus',
+        //       },
+        //     ],
+        //   },
+        // ],
         copyright: `Copyright © ${new Date().getFullYear()} Fasltlane Digital Platform.`,
       },
       prism: {
