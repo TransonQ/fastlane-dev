@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Fastlane Dev',
-  tagline: 'Welcome Devlopers! ',
+  tagline: '前端小灶',
   url: 'https://fastlane-dev.vercel.app',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -76,11 +76,11 @@ const config = {
             position: 'left',
           },
           { label: 'Blogs', to: '/blog', position: 'left' },
-          // {
-          //   href: 'https://github.com/facebook/docusaurus',
-          //   label: 'GitHub',
-          //   position: 'right',
-          // },
+          {
+            href: 'https://github.com/quanscheng/fastlane-dev',
+            label: 'GitHub',
+            position: 'right',
+          },
         ],
       },
       footer: {

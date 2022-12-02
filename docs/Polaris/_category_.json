@@ -1,6 +1,6 @@
 {
   "label": "Polaris Components",
-  "position": 3,
+  "position": 13,
   "link": {
     "type": "generated-index",
     "description": "基于Polaris的自定义组件"
