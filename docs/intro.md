@@ -2,6 +2,7 @@
 sidebar_position: 1
 ---
 
-# Guide
+# 大纲方向
 
-![roadmap](./intro.assets/roadmap.png)
+![大纲方向](./intro.assets/大纲方向.png)
+
