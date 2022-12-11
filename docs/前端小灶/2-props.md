@@ -67,3 +67,68 @@ export const Profile = ({ name }) => {
 }
 ```
 
+
+## props 的默认值
+
+在上面的例子中，如果在不给`Profile` 组件传入 `name` 属性的时候，props 接收不到任何东西，如果如需一个默认显示的值，可以给组件接收参数设定*默认值* 。
+
+```jsx
+export const Profile = ({ name = '张三丰' }) => {
+// 给接收的参数设置了默认值, 就算不传参数, 仍然有默认显示 
+  return <div>{name}</div>
+}
+```
+
+## children 
+
+除了直接属性传递，还可以使用类似于插槽的方式，将整个组件传递。
+首先封装一个`Card`组件，作为外壳样式组件。再向内传入内容；如下：
+
+```jsx title="App.js"
+import { Card } from './Card'
+
+function App() {
+  return (
+    <>
+      <Card>123</Card>
+    </>
+  )
+}
+
+```
+
+```jsx title="Card.jsx"
+import './card.css'
+
+export const Card = ({ children }) => {
+  return <div className='card'>{children}</div>
+}
+```
+
+样式我们使用类名的形式：
+```css title="card.css"
+.card {
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+```
+
+![](image/Pasted%20image%2020221211204847.png)
+
+这样一个 `Card` 组件就封装好啦，这里就像是我们造了一个我们自定义的标签，不过在 react 里面被称为`组件( component )`
+
+:::info props 不可变
+- props 不可变
+- 想要使渲染该 props 的更新视图，必须传递一个新的对象。
+- 理解同`useState`创建的状态值，状态本身不可变，改变需要调用`setState`方法，而此种方法会传递一个崭新的地址，从而使得组件的视图更新。
+- `props`只是在当次渲染的不可变快照，更新视图渲染后都会获得一个新的地址值。（了解）
+- 用`children`传入参数/组件时，规则同组件 `return`的规则，有且只能传入一个 jsx，多个组件需要用`div`/`<></>`包裹。
+:::
+
+## 写一个具备增加和删除的 todo list
+
+![](image/Pasted%20image%2020221211214758.png)
