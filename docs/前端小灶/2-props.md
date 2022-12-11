@@ -2,9 +2,68 @@
 slug: props
 ---
 
-## props
+## 上期回顾
+
+从快速上手的章节我们大致了解了如下的知识点:
+
+- 快速创建 react 项目的方式
+- 创建组件并渲染
+- 通过 CRA 创建的项目的代码结构
+- JSX 写法的注意事项
+- 在 JSX 中引入样式, 类名`className` 和行内样式`style={ {css 对象} }`
+- 在 JSX 中渲染数据 `{ js 表达式 }`
+- 条件渲染
+- 渲染列表的思路
+- JSX 中的事件写法 `小驼峰: onClick`
+- 简单介绍了 react 中的状态 `useState`
+
+## 先实现一个简单的点击计数
+
+> 实现一个按钮并且实时显示数字长度
+> - 使用`useState`定义一个状态`count`，初始值为 `1`;
+> - 渲染一个 `button`标签，并且绑定点击事件，每次点击按钮，`count`值加 `1`。
+> - 把 `count`的值渲染到页面上，文案满足以下条件。
+> - 当 `count<=10` 文案为: 当前值在 1 - 10 以内；当`count>10` 文案为: 当前值大于 10。
+> - ![](image/Pasted%20image%2020221211152214.png)
+> - ![](image/Pasted%20image%2020221211152250.png)
 
 
+## 组件的属性
+
+```jsx
+function App(){
+	// 组件 App 返回一个 img 标签, img 接收的属性有: src, className, alt
+	return <img src="..." className="avatar" alt="seo_name" />
+}
+```
+
+在组件化的时候，我们需要接收来自上级组件传递的属性，封装成一个达到特定业务渲染的可复用组件。
+
+首先一起看一下，组件如何接收传入的属性
+```jsx title="组件接收属性的写法"
+function App() {
+ // 引入声明的组件 Profile
+  return (
+    <>
+      <Profile name="法外狂徒张三" />
+    </>
+  )
+}
 
 
+export const Profile = (props) => {
+  // 打印看看接收到的 props 是什么结构
+  console.log('props: ', props); // props: {name: '法外狂徒张三'}
+  return (
+    <div>Profile</div>
+  )
+}
+```
+
+一般来说，项目中在接收属性传参的时候，会先解构 props 对象， 就像如下这样：
+```jsx title="解构获取参数"
+export const Profile = ({ name }) => {
+  return <div>{name}</div>
+}
+```
 
